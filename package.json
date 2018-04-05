@@ -1,0 +1,19 @@
+{
+  "name": "yawpp",
+  "version": "1.0.0",
+  "description": "YouAreWhatPhotosYouPost",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Dani Damara, Marco Sumali, Wika Silo, Zena Vilenia",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "fb": "^2.0.0",
+    "mongoose": "^5.0.12",
+    "morgan": "^1.9.0"
+  }
+}
