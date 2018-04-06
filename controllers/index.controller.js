@@ -17,7 +17,7 @@ module.exports = {
             let {name, email} = response
             let newUser = new user({name, email})
             
-            User.findOne({
+            user.findOne({
                 email: newUser.email
             }, function(err, info){
                 if(!info) {
@@ -31,7 +31,8 @@ module.exports = {
                             console.log('masuk sini')
                             res.status(200).json({
                             message: "success login",
-                            token: token
+                            token: token,
+                            id: user._id
                             })
                         }
                     })
@@ -42,7 +43,8 @@ module.exports = {
                     console.log('masuk sini')
                     res.status(200).json({
                     message: "success login",
-                    token: token
+                    token: token,
+                    id: info._id
                     })
                 }
             })

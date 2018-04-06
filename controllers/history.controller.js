@@ -5,9 +5,10 @@ module.exports = {
     getAllHistories (req, res) {
         history
             .find()
-            .populate('images')
-            .populate('quotes')
-            .populate('musics')
+            .populate('user')
+            .populate('image')
+            .populate('quote')
+            .populate('music')
             .exec()
             .then(response => {
                 res.status(200).send({
@@ -37,9 +38,9 @@ module.exports = {
         });
     },
     createHistory (req, res) {
-        const {image, quote, music} = req.body
+        const {image, quote, music, user} = req.body
         let newHistory = new history({
-            image, quote, music
+            image, quote, music, user
         })
 
         newHistory.save((err, result) => {

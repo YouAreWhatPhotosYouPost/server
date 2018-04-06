@@ -4,19 +4,19 @@ const Schema = mongoose.Schema
 let historySchema = mongoose.Schema({
     image: {
         type: Schema.Types.ObjectId,
-        ref: "images"
+        ref: "image"
     },
     quote: {
         type: Schema.Types.ObjectId,
-        ref: "quotes"
+        ref: "Quote"
     },
     music: {
         type: Schema.Types.ObjectId,
-        ref: "musics"
+        ref: "music"
     },
     user: {
         type: Schema.Types.ObjectId,
-        ref: "users"
+        ref: "User"
     }
 }, {
     timestamps: true

@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const {homePage, login, register, faceAnalyze} = require('../controllers/index.controller')
-const {saveMusicRec, showAllMusic, deleteMusicRec} = require('../controllers/music.controller')
+const {saveMusicRec, showAllMusic, deleteMusicRec, findMusicById} = require('../controllers/music.controller')
 const QuotesController = require('../controllers/quotes.controller')
 
 router
@@ -11,6 +11,7 @@ router
     .get('/quotes', QuotesController.showQuotes)
     .post('/faceAnalyze', faceAnalyze)
     .get('/music', showAllMusic)
+    .get('/getOneMusic', findMusicById)
     .post('/music/save', saveMusicRec)
     .delete('/music/:id', deleteMusicRec)
 
