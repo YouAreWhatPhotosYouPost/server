@@ -10,10 +10,14 @@ let historySchema = mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: "quotes"
     },
-    music: [{
+    music: {
         type: Schema.Types.ObjectId,
         ref: "musics"
-    }],
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "users"
+    }
 }, {
     timestamps: true
 })

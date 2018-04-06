@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken')
 const FB = require('fb');
-const User = require('../models/user')
+const user = require('../models/user')
 const image = require('../models/image.model')
 
 const tokenPassword = process.env.tokenPassword
@@ -15,7 +15,7 @@ module.exports = {
         FB.setAccessToken(token);
         FB.api('/me', {fields: ['email', 'first_name', 'name']}, function(response) {
             let {name, email} = response
-            let newUser = new User({name, email})
+            let newUser = new user({name, email})
             
             User.findOne({
                 email: newUser.email
@@ -48,7 +48,6 @@ module.exports = {
             })
         })
     },
-
     faceAnalyze: (req, res) => {
         const emotions = req.body.data[0].faceAttributes.emotion;
         const urlImage = req.body.data[0].urlImage;
