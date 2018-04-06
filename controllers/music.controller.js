@@ -28,11 +28,13 @@ module.exports = {
     // })
     // console.log(req.body.itunesRec);
 
+    console.log("Masuk")
+
     let newMusicRec = new music({
       musicRecommendation: req.body.itunesRec
     })
 
-    // console.log(newMusicRec);
+    console.log(newMusicRec);
 
     newMusicRec.save((err, musicRec) => {
       if(err){

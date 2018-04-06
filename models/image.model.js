@@ -11,6 +11,6 @@ let imageSchema = mongoose.Schema({
     timestamps: true
 })
 
-let image = mongoose.model('images', imageSchema)
+let image = mongoose.model('image', imageSchema)
 
 module.exports = image

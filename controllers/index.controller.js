@@ -1,5 +1,5 @@
 const image = require('../models/image.model')
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 module.exports = {
     homePage: (req, res) => {
