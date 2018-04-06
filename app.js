@@ -3,8 +3,9 @@ const morgan = require('morgan')
 const cors = require('cors')
 const app = express()
 const mongoose = require('mongoose');
+const FB = require('fb');
 
-mongoose.connect('mongodb://localhost/library_mongoose');
+mongoose.connect('mongodb://localhost/yawpp_db');
 require('dotenv').config()
 
 app.use(cors())
@@ -20,6 +21,9 @@ db.once('open', function() {
 
 const index = require('./routes/index')
 app.use('/', index)
+
+const history = require('./routes/history')
+app.use('/history', history)
 
 const port = process.env.PORT || 3000;
 
