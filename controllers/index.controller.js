@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const FB = require('fb');
-
 const User = require('../models/user')
 const image = require('../models/image.model')
 

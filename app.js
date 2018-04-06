@@ -22,6 +22,9 @@ db.once('open', function() {
 const index = require('./routes/index')
 app.use('/', index)
 
+const history = require('./routes/history')
+app.use('/history', history)
+
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
