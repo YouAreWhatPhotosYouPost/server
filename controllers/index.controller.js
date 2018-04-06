@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken')
 const FB = require('fb');
 const user = require('../models/user')
 const image = require('../models/image.model')
+
+const tokenPassword = process.env.tokenPassword
 
 module.exports = {
     homePage: (req, res) => {
@@ -14,26 +17,35 @@ module.exports = {
             let {name, email} = response
             let newUser = new user({name, email})
             
-            user.findOne(
-                {
-                    email: newUser.email
-                },
-                function(err, info){
-                    if(!info) {
-                        newUser.save((err, user) => {
-                            if(err) {
-                                res.status(500).json( {message: 'error database'} )
-                            } else {
-                                res.status(201).json({
-                                message: 'success insert user',
-                                data: user,
-                                userid: user.id
-                                })
-                            }
-                        })
-                    }
+            User.findOne({
+                email: newUser.email
+            }, function(err, info){
+                if(!info) {
+                    newUser.save((err, user) => {
+                        if(err) {
+                            res.status(500).json( {message: 'error database'} )
+                        } else {
+                            let token = jwt.sign({
+                                token: user
+                            }, tokenPassword)
+                            console.log('masuk sini')
+                            res.status(200).json({
+                            message: "success login",
+                            token: token
+                            })
+                        }
+                    })
+                } else {
+                    let token = jwt.sign({
+                        token: info
+                    }, tokenPassword)
+                    console.log('masuk sini')
+                    res.status(200).json({
+                    message: "success login",
+                    token: token
+                    })
                 }
-            )
+            })
         })
     },
     faceAnalyze: (req, res) => {
