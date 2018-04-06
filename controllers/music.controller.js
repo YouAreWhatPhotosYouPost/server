@@ -31,6 +31,7 @@ module.exports = {
     let newMusicRec = new music({
       musicRecommendation: req.body.itunesRec
     })
+
     // console.log(newMusicRec);
 
     newMusicRec.save((err, musicRec) => {
@@ -47,6 +48,7 @@ module.exports = {
 
       }
     })
+
   },
   deleteMusicRec: function(req, res){
     let musicId = req.params.id;
