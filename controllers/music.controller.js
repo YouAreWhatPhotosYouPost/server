@@ -18,6 +18,24 @@ module.exports = {
            })
          })
   },
+  findMusicById: function(req, res){
+    //nanti tampilin data music sesuai id
+    const {id} = req.params
+    music.findOne({
+      _id: ObjectID(id)
+    })
+         .then(musics => {
+           res.status(200).json({
+             message: "Show all Musics",
+             musics
+           })
+         })
+         .catch(err => {
+           res.status(500).json({
+             message: err
+           })
+         })
+  },
   saveMusicRec: function(req, res){
     // let newMusic = new music({
     //   artistName: ,
