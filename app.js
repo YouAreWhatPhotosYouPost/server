@@ -3,6 +3,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const app = express()
 const mongoose = require('mongoose');
+const FB = require('fb');
 
 mongoose.connect('mongodb://localhost/yawpp_db');
 require('dotenv').config()
