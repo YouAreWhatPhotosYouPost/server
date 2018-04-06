@@ -5,9 +5,9 @@ module.exports = {
     getAllHistories (req, res) {
         history
             .find()
-            .populate('image')
-            .populate('quote')
-            .populate('music')
+            .populate('images')
+            .populate('quotes')
+            .populate('musics')
             .exec()
             .then(response => {
                 res.status(200).send({
@@ -38,7 +38,7 @@ module.exports = {
     },
     createHistory (req, res) {
         const {image, quote, music} = req.body
-        let newTransaction = new history({
+        let newHistory = new history({
             image, quote, music
         })
 
