@@ -4,7 +4,7 @@ const cors = require('cors')
 const app = express()
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/library_mongoose');
+mongoose.connect('mongodb://localhost/yawpp_db');
 require('dotenv').config()
 
 app.use(cors())
