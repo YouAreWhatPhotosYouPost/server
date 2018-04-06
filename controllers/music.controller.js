@@ -1,4 +1,4 @@
-const music = require('../models/music')
+const music = require('../models/music.model')
 const ObjectID = require('mongodb').ObjectID;
 
 module.exports = {
@@ -31,22 +31,22 @@ module.exports = {
     let newMusicRec = new music({
       musicRecommendation: req.body.itunesRec
     })
-    console.log(newMusicRec);
+    // console.log(newMusicRec);
 
-    // newMusicRec.save((err, musicRec) => {
-    //   if(err){
-    //     res.status(500).json({
-    //       message: err
-    //     })
-    //   }else{
-    //     console.log(musicRec);
-    //     res.status(201).json({
-    //       message: 'Music Recommendation has been added',
-    //       musicRec
-    //     })
-    //
-    //   }
-    // })
+    newMusicRec.save((err, musicRec) => {
+      if(err){
+        res.status(500).json({
+          message: err
+        })
+      }else{
+        // console.log(musicRec);
+        res.status(201).json({
+          message: 'Music Recommendation has been added',
+          musicRec
+        })
+
+      }
+    })
   },
   deleteMusicRec: function(req, res){
     let musicId = req.params.id;
